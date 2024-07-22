@@ -5,7 +5,7 @@ import classNames from 'classnames';
 type FooterProps = {
   onSetQuery: (FilterType: FilterType) => void;
   query: FilterType;
-  left: () => number;
+  leftTodos: () => number;
   deactivateClearAllButton: () => boolean;
   onRemoveAllComplited: () => void;
 };
@@ -13,14 +13,14 @@ type FooterProps = {
 export const Footer = ({
   onSetQuery,
   query,
-  left,
+  leftTodos,
   deactivateClearAllButton,
   onRemoveAllComplited,
 }: FooterProps) => {
   return (
     <footer className="todoapp__footer" data-cy="Footer">
       <span className="todo-count" data-cy="TodosCounter">
-        {left()} items left
+        {leftTodos()} items left
       </span>
 
       {/* Active link should have the 'selected' class */}

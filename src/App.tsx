@@ -40,9 +40,9 @@ export const App: React.FC = () => {
       return todos.filter(todo => !todo.completed);
     } else if (query === FilterType.Completed) {
       return todos.filter(todo => todo.completed);
-    } else {
-      return todos;
     }
+
+    return todos;
   };
 
   const filteredTodos = filterTodos();
@@ -107,17 +107,6 @@ export const App: React.FC = () => {
       setUpdatedTodosId(prev => prev.filter(el => el != id));
     }
 
-    /* removeTodo(id)
-      .then(() => {
-        setTodos(prev => prev.filter(el => el.id != id));
-        success = true;
-      })
-      .catch(() => setError(ErrorType.UnableToDelete))
-      .finally(() => {
-        setUpdatedTodosId(prev => prev.filter(el => el != id));
-        inputRef.current?.focus();
-      });
-    */
     return success;
   };
 
@@ -177,7 +166,7 @@ export const App: React.FC = () => {
     const status = !isAllTodosCompleted();
 
     todos.map(todo => {
-      if ((status && !todo.completed) || !status) {
+      if (todo.completed !== status) {
         handleUpdate(todo.id, { completed: status });
       }
     });
@@ -218,7 +207,7 @@ export const App: React.FC = () => {
           todosLength={todos.length}
         />
 
-        {filteredTodos && filteredTodos.length > 0 && (
+        {filteredTodos?.length > 0 && (
           <TodosList
             todos={filteredTodos}
             tmpTodo={tmpTodo}
@@ -232,11 +221,11 @@ export const App: React.FC = () => {
           />
         )}
 
-        {todos && todos.length > 0 && (
+        {todos?.length > 0 && (
           <Footer
             onSetQuery={handleSetQuery}
             query={query}
-            left={returnLeftNumber}
+            leftTodos={returnLeftNumber}
             deactivateClearAllButton={deactivateClearAllButton}
             onRemoveAllComplited={handleRemoveAllComplited}
           />
