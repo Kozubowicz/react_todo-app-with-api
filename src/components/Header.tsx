@@ -12,7 +12,13 @@ export const MyInput = forwardRef(function MyInput(
   props: HeaderProps,
   ref: React.Ref<HTMLInputElement>,
 ) {
-  const { onSubmit, isAllTodosCompleted, onToggleAll, todosLength } = props;
+  // eslint-disable-next-line prettier/prettier
+  const {
+    onSubmit,
+    isAllTodosCompleted,
+    onToggleAll,
+    todosLength
+  } = props;
 
   return (
     <header className="todoapp__header">

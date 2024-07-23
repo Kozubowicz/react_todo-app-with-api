@@ -97,7 +97,6 @@ export const TodoItem = ({
             placeholder="Empty todo will be deleted"
             ref={titleRef}
             onKeyUp={event => hanldeKeyUp(event)}
-            // onBlur={event => updateTitle(event, id)}
           />
         </form>
       ) : (
